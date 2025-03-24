@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import { 
-  FileJson, FilePdf, FileText, Trash2, CheckCircle, Clock, Search,
+  FileJson, FileType, FileText, Trash2, CheckCircle, Clock, Search,
   SortAsc, SortDesc, ChevronDown, MoreHorizontal, Database 
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -98,7 +97,7 @@ const DocumentList: React.FC = () => {
       case 'json':
         return <FileJson className="w-5 h-5 text-blue-500" />;
       case 'pdf':
-        return <FilePdf className="w-5 h-5 text-red-500" />;
+        return <FileType className="w-5 h-5 text-red-500" />;
       case 'txt':
         return <FileText className="w-5 h-5 text-gray-500" />;
       default:

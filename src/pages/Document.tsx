@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { getDocument, deleteDocument } from '@/services/documentService';
 import { Document as DocumentType } from '@/types/document';
 import { toast } from 'sonner';
-import { FileJson, FilePdf, FileText, Trash2, ChevronLeft, Clock, CheckCircle, Database } from 'lucide-react';
+import { FileJson, FileType, FileText, Trash2, ChevronLeft, Clock, CheckCircle, Database } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 
 const DocumentDetail = () => {
@@ -69,7 +69,7 @@ const DocumentDetail = () => {
       case 'json':
         return <FileJson className="w-10 h-10 text-blue-500" />;
       case 'pdf':
-        return <FilePdf className="w-10 h-10 text-red-500" />;
+        return <FileType className="w-10 h-10 text-red-500" />;
       case 'txt':
         return <FileText className="w-10 h-10 text-gray-500" />;
       default:

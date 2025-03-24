@@ -1,6 +1,6 @@
 
 import React, { useState, useRef } from 'react';
-import { Upload, File, X, FileJson, FilePdf, FileText } from 'lucide-react';
+import { Upload, File, X, FileJson, FileType, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { uploadDocument } from '@/services/documentService';
@@ -80,7 +80,7 @@ const FileUpload: React.FC = () => {
       case 'json':
         return <FileJson className="w-10 h-10 text-blue-500" />;
       case 'pdf':
-        return <FilePdf className="w-10 h-10 text-red-500" />;
+        return <FileType className="w-10 h-10 text-red-500" />;
       case 'txt':
         return <FileText className="w-10 h-10 text-gray-500" />;
       default:
