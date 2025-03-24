@@ -188,7 +188,7 @@ const FileUpload: React.FC = () => {
             description="Structured data in JSON format"
           />
           <FileTypeCard 
-            icon={<FilePdf className="w-6 h-6 text-red-500" />} 
+            icon={<FileType className="w-6 h-6 text-red-500" />} 
             title="PDF Documents" 
             description="Text extraction from PDF files"
           />
