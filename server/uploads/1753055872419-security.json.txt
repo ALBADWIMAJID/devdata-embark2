@@ -1,0 +1,1 @@
+set SOLR_OPTS=%SOLR_OPTS% -Dsolr.allowPaths="C:\Users\albad\Downloads\solr-9.6.1"

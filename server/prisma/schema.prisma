@@ -1,0 +1,23 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Document {
+  id         String   @id @default(cuid())         // معرّف فريد
+  name       String                                // الاسم الأصلي للملف
+  filename   String                                // اسم الملف على السيرفر
+  fileType   String                                // نوع الملف (pdf، json...)
+  size       Int                                   // الحجم بالبايت
+  preview    String?                               // مقتطف من الملف (اختياري)
+  processed  Boolean  @default(false)              // هل تمت معالجته؟
+  embedding  Boolean  @default(false)              // هل تم إنشاء embedding؟
+  vectorId   String?                               // معرّف embedding (لاحقًا)
+  createdAt  DateTime @default(now())              // تاريخ الإنشاء
+}

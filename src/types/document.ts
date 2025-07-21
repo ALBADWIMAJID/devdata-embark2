@@ -1,7 +1,7 @@
-
 export interface Document {
   id: string;
   name: string;
+  filename: string; // ✅ تمت إضافته هنا
   fileType: 'json' | 'pdf' | 'txt';
   size: number;
   createdAt: Date;
