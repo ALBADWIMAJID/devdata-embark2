@@ -9,7 +9,7 @@ import { PrismaClient } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 
 const app = express();
-const port = 3001;
+const port = Number(process.env.PORT) || 3001;
 const prisma = new PrismaClient();
 
 app.use(cors());
@@ -19,6 +19,13 @@ app.use(express.json());
 const uploadsDir = path.join(__dirname, "..", "uploads");
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir);
+}
+
+const repoRoot = path.join(__dirname, "..", "..");
+const clientDist = path.join(repoRoot, "dist");
+const hasClientDist = fs.existsSync(path.join(clientDist, "index.html"));
+if (hasClientDist) {
+  app.use(express.static(clientDist));
 }
 
 // إعداد multer لتخزين الملفات فعليًا
@@ -133,7 +140,7 @@ app.get("/api/stats", async (_req, res) => {
   const processedDocuments = await prisma.document.count({ where: { processed: true } });
   const embeddedDocuments = await prisma.document.count({ where: { embedding: true } });
 
-  const sizeData = await prisma.document.findMany({
+  const sizeData: Array<{ size: number }> = await prisma.document.findMany({
     select: { size: true },
   });
   const totalSize = sizeData.reduce((sum, doc) => sum + doc.size, 0);
@@ -147,6 +154,15 @@ app.get("/api/stats", async (_req, res) => {
 });
 
 // ✅ تشغيل الخادم
+if (hasClientDist) {
+  app.use((req, res) => {
+    if (req.path.startsWith("/api")) {
+      return res.status(404).json({ error: "Not found" });
+    }
+    res.sendFile(path.join(clientDist, "index.html"));
+  });
+}
+
 app.listen(port, () => {
   console.log(`✅ Server running on http://localhost:${port}`);
 });

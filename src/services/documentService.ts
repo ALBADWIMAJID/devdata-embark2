@@ -1,7 +1,7 @@
 import { Document, DocumentStats, UploadResponse } from '../types/document';
 import { toast } from 'sonner';
 
-const API_URL = 'http://localhost:3001';
+const API_BASE_URL = import.meta.env.VITE_API_URL?.replace(/\/$/, '') ?? '';
 
 // ✅ رفع ملف
 export const uploadDocument = async (
@@ -11,7 +11,7 @@ export const uploadDocument = async (
   formData.append('file', file);
 
   try {
-    const res = await fetch(`${API_URL}/api/upload`, {
+    const res = await fetch(`${API_BASE_URL}/api/upload`, {
       method: 'POST',
       body: formData,
     });
@@ -46,7 +46,7 @@ export const uploadDocument = async (
 
 // ✅ جلب كل الملفات
 export const getDocuments = async (): Promise<Document[]> => {
-  const res = await fetch(`${API_URL}/api/documents`);
+  const res = await fetch(`${API_BASE_URL}/api/documents`);
   const data = await res.json();
   return data.documents.map((doc: any) => ({
     ...doc,
@@ -56,7 +56,7 @@ export const getDocuments = async (): Promise<Document[]> => {
 
 // ✅ جلب ملف واحد
 export const getDocument = async (id: string): Promise<Document | null> => {
-  const res = await fetch(`${API_URL}/api/document/${id}`);
+  const res = await fetch(`${API_BASE_URL}/api/document/${id}`);
   if (!res.ok) return null;
   const data = await res.json();
   return {
@@ -67,13 +67,13 @@ export const getDocument = async (id: string): Promise<Document | null> => {
 
 // ✅ إحصائيات
 export const getDocumentStats = async (): Promise<DocumentStats> => {
-  const res = await fetch(`${API_URL}/api/stats`);
+  const res = await fetch(`${API_BASE_URL}/api/stats`);
   return res.json();
 };
 
 // ✅ حذف ملف
 export const deleteDocument = async (id: string): Promise<boolean> => {
-  const res = await fetch(`${API_URL}/api/delete/${id}`, {
+  const res = await fetch(`${API_BASE_URL}/api/delete/${id}`, {
     method: 'DELETE',
   });
   return res.ok;

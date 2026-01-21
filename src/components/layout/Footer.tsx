@@ -64,7 +64,7 @@ const Footer = () => {
           <h3 className="font-medium text-sm mb-4">Resources</h3>
           <ul className="space-y-2">
             <FooterLink to="/documentation">Documentation</FooterLink>
-            <FooterLink to="/api">API Reference</FooterLink>
+            <FooterLink to="/api-reference">API Reference</FooterLink>
             <FooterLink to="/examples">Examples</FooterLink>
             <FooterLink to="/blog">Blog</FooterLink>
           </ul>

@@ -64,6 +64,10 @@ This project is built with .
 
 Simply open [Lovable](https://lovable.dev/projects/2bc6d102-9334-4f38-b387-b550bf8659db) and click on Share -> Publish.
 
+## How do I run the project locally?
+
+See `RUNNING_RU.md` for detailed, step-by-step instructions.
+
 ## I want to use a custom domain - is that possible?
 
 We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
