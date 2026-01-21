@@ -66,7 +66,7 @@ Simply open [Lovable](https://lovable.dev/projects/2bc6d102-9334-4f38-b387-b550b
 
 ## How do I run the project locally?
 
-See `RUNNING_RU.md` for detailed, step-by-step instructions.
+See `RUNNING_RU.md` (RU) or `RUNNING_AR.md` (AR) for detailed, step-by-step instructions.
 
 ## I want to use a custom domain - is that possible?
 
